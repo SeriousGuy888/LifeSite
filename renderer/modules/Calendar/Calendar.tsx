@@ -29,12 +29,16 @@ const Calendar = () => {
         </button>
       </section>
       <section className="grid grid-cols-7 gap-2">
-        {[...Array(31)].map((_, i) => (
+        {[...Array(getNumDaysInMonth(month))].map((_, i) => (
           <CalendarDay key={i} day={i + 1} />
         ))}
       </section>
     </div>
   )
+}
+
+function getNumDaysInMonth(date: Date) {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
 }
 
 export default Calendar
