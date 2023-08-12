@@ -34,7 +34,7 @@ const Calendar = () => {
       </section>
       <section className="grid grid-cols-7 gap-2">
         {[...Array(month.getDay())].map(() => (
-          <span></span>
+          <span key={"blank"}></span>
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => (
           <CalendarDay key={i} day={i + 1} />
