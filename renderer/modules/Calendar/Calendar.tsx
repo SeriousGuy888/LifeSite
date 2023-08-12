@@ -2,7 +2,11 @@ import React from "react"
 import CalendarDay from "./CalendarDay"
 
 const Calendar = () => {
-  const [month, setMonth] = React.useState<Date>(new Date())
+  const currDate = new Date()
+
+  const [month, setMonth] = React.useState<Date>(
+    new Date(currDate.getFullYear(), currDate.getMonth()),
+  )
 
   return (
     <div className="grid grid-cols-1 gap-4">
@@ -29,6 +33,9 @@ const Calendar = () => {
         </button>
       </section>
       <section className="grid grid-cols-7 gap-2">
+        {[...Array(month.getDay())].map(() => (
+          <span></span>
+        ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => (
           <CalendarDay key={i} day={i + 1} />
         ))}
