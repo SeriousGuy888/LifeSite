@@ -44,8 +44,8 @@ const Calendar = () => {
         </button>
       </section> */}
       <section className="grid grid-cols-7 gap-2">
-        {[...Array(month.getDay())].map(() => (
-          <span key={"blank"}></span>
+        {[...Array(month.getDay())].map((_, i) => (
+          <span key={"blank" + i}></span> // NOSONAR
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => (
           <CalendarDay key={i} day={i + 1} /> // NOSONAR
