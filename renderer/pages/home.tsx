@@ -5,7 +5,7 @@ import Calendar from "../modules/Calendar/Calendar"
 
 function Home() {
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
@@ -27,7 +27,7 @@ function Home() {
           <a className="btn-blue">Go to next page</a>
         </Link>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
