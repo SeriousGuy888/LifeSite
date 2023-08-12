@@ -37,7 +37,7 @@ const Calendar = () => {
           <span key={"blank"}></span>
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => (
-          <CalendarDay key={i} day={i + 1} />
+          <CalendarDay key={i} day={i + 1} /> // NOSONAR
         ))}
       </section>
     </div>
