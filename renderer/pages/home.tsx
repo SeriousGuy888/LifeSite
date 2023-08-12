@@ -2,6 +2,7 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 import Calendar from "../modules/Calendar/Calendar"
+import UserInput from "../modules/Calendar/UserInput/UserInput"
 
 function Home() {
   return (
@@ -12,6 +13,11 @@ function Home() {
       <div className="flex justify-center">
         <div className="max-w-4xl">
           <Calendar />
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <div className="max-w-4xl">
+          <UserInput />
         </div>
       </div>
       {/* <div className="mt-1 w-full flex-wrap flex justify-center">
