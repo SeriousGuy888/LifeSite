@@ -2,6 +2,7 @@ import{ useState } from "react";
 
 export default function UserInput(){
     const [name, setName] = useState('');
+    
 
     return(
         <>
@@ -10,8 +11,7 @@ export default function UserInput(){
                 onChange={e => setName(e.target.value)}
             />
             <p>
-                You are {name}
-                placeholder = "health state"
+                You are {name || "(health state)"}
             </p>
         </>
         
