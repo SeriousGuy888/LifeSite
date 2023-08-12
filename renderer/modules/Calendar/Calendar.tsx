@@ -6,13 +6,27 @@ const Calendar = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4">
-      <section>
+      <section className="flex justify-between">
+        <button
+          onClick={() => {
+            setMonth(new Date(month.getFullYear(), month.getMonth() - 1))
+          }}
+        >
+          {"<"}
+        </button>
         <h2 className="text-2xl">
           {month.toLocaleDateString(undefined, {
             year: "numeric",
             month: "long",
           })}
         </h2>
+        <button
+          onClick={() => {
+            setMonth(new Date(month.getFullYear(), month.getMonth() + 1))
+          }}
+        >
+          {">"}
+        </button>
       </section>
       <section className="grid grid-cols-7 gap-2">
         {[...Array(31)].map((_, i) => (
