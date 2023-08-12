@@ -1,7 +1,12 @@
 import React, { useEffect } from "react"
 import CalendarDay from "./CalendarDay"
 
+import { useAtom } from "jotai"
+import { selectedDayAtom } from "../../lib/store"
+
 const Calendar = () => {
+  const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom)
+
   const currDate = new Date()
 
   const [month, setMonth] = React.useState<Date>(
@@ -13,6 +18,10 @@ const Calendar = () => {
     setMonth(new Date(year, month))
   }
 
+  const handleSelectDay = (date: Date) => {
+    setSelectedDay(date)
+  }
+
   return (
     <div className="grid grid-cols-1 gap-4">
       <input
@@ -21,35 +30,21 @@ const Calendar = () => {
         onChange={handleChangeMonth}
         type="month"
       />
-      {/* <section className="flex justify-between">
-        <button
-          onClick={() => {
-            setMonth(new Date(month.getFullYear(), month.getMonth() - 1))
-          }}
-        >
-          {"<"}
-        </button>
-        <h2 className="text-2xl">
-          {month.toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-          })}
-        </h2>
-        <button
-          onClick={() => {
-            setMonth(new Date(month.getFullYear(), month.getMonth() + 1))
-          }}
-        >
-          {">"}
-        </button>
-      </section> */}
+      <p>{selectedDay.toISOString()}</p>
       <section className="grid grid-cols-7 gap-2">
         {[...Array(month.getDay())].map((_, i) => (
           <span key={"blank" + i}></span> // NOSONAR
         ))}
-        {[...Array(getNumDaysInMonth(month))].map((_, i) => (
-          <CalendarDay key={i} day={i + 1} /> // NOSONAR
-        ))}
+        {[...Array(getNumDaysInMonth(month))].map((_, i) => {
+          const date = new Date(month.getFullYear(), month.getMonth(), i + 1)
+          return (
+            <CalendarDay
+              key={date.toISOString()}
+              date={date}
+              selectDayFunc={handleSelectDay}
+            />
+          )
+        })}
       </section>
     </div>
   )

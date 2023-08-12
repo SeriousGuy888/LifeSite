@@ -10,21 +10,14 @@ function Home() {
       <Head>
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
-      <div className="flex justify-center">
-        <div className="max-w-4xl">
+      <main className="grid grid-cols-2 h-screen">
+        <section className="bg-gray-900 p-8">
           <Calendar />
-        </div>
-      </div>
-      <div className="flex justify-center">
-        <div className="max-w-4xl">
+        </section>
+        <section className="bg-gray-800 p-8">
           <UserInput />
-        </div>
-      </div>
-      {/* <div className="mt-1 w-full flex-wrap flex justify-center">
-        <Link href="/next">
-          <a className="btn-blue">Go to next page</a>
-        </Link>
-      </div> */}
+        </section>
+      </main>
     </>
   )
 }
