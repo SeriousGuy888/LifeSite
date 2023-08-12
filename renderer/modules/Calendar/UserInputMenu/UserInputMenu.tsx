@@ -10,9 +10,15 @@ const validResponses = [
 ]
 
 export default function UserInput() {
+<<<<<<< Updated upstream
   const [name, setName] = useState("")
   const [isValid, setIsValid] = useState(true)
   const [savedResponse, setSavedResponse] = useState("")
+=======
+  const [name, setName] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const [savedResponse, setSavedResponse] = useState("");
+>>>>>>> Stashed changes
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value
@@ -22,17 +28,27 @@ export default function UserInput() {
 
   const saveResponse = () => {
     if (validResponses.includes(name)) {
+<<<<<<< Updated upstream
       setSavedResponse(name)
     }
   }
 
   let responseMessage = ""
   let healthTip = ""
+=======
+      setSavedResponse(name);
+    }
+  };
+
+  let responseMessage = "";
+  let healthTip = "";
+>>>>>>> Stashed changes
 
   if (!isValid) {
     responseMessage = "Please enter a valid health state"
   } else if (validResponses.includes(name)) {
     switch (name) {
+<<<<<<< Updated upstream
       case "physically healthy":
         responseMessage = "Great job on maintaining a healthy physical state!"
         healthTip = "Consider visiting our health tips page for more advice."
@@ -68,6 +84,13 @@ export default function UserInput() {
       default:
         responseMessage = "You are in an undefined health state."
         break
+=======
+      // ... (same as before)
+
+      default:
+        responseMessage = "You are in an undefined health state.";
+        break;
+>>>>>>> Stashed changes
     }
   }
 
@@ -82,10 +105,24 @@ export default function UserInput() {
       <p>{responseMessage}</p>
       {healthTip && (
         <p>
+<<<<<<< Updated upstream
           {healthTip} <a href="/health-tips-page">Visit our health tips page</a>
         </p>
       )}
       {savedResponse && <p>Saved Response: {savedResponse}.</p>}
     </>
   )
+=======
+          {healthTip}{" "}
+          <a href="/health-tips-page">Visit our health tips page</a>
+        </p>
+      )}
+      {savedResponse && (
+        <p>
+          Saved Response: {savedResponse}.
+        </p>
+      )}
+    </>
+  );
+>>>>>>> Stashed changes
 }
