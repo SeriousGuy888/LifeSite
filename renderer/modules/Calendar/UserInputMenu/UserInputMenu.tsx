@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 const validResponses = [
   "physically healthy",
@@ -70,17 +71,19 @@ export default function UserInput() {
         onChange={handleInputChange}
         style={{ color: "black" }}
       />
-      <button onClick={saveResponse}>Save Response</button>
+      <button onClick={saveResponse}>Set your health state</button>
       <p>{responseMessage}</p>
       {healthTip && (
         <p>
           {healthTip}{" "}
-          <a href="/health-tips-page">Visit our health tips page</a>
+          <Link href="/health-tips-page">
+            <a>Visit our health tips page</a>
+          </Link>
         </p>
       )}
       {savedResponse && (
         <p>
-          Saved Response: {savedResponse}.
+          Health state: {savedResponse}.
         </p>
       )}
     </>
