@@ -1,3 +1,7 @@
+import Calendar from "../modules/Calendar/Calendar"
+
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>;
+  return <>
+    <Calendar />
+  </>
 }
