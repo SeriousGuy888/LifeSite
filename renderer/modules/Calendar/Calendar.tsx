@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import CalendarDay from "./CalendarDay"
 
 const Calendar = () => {
@@ -7,10 +7,21 @@ const Calendar = () => {
   const [month, setMonth] = React.useState<Date>(
     new Date(currDate.getFullYear(), currDate.getMonth()),
   )
+  const handleChangeMonth = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const year = event.target.valueAsDate.getUTCFullYear()
+    const month = event.target.valueAsDate.getUTCMonth()
+    setMonth(new Date(year, month))
+  }
 
   return (
     <div className="grid grid-cols-1 gap-4">
-      <section className="flex justify-between">
+      <input
+        className="bg-gray-700"
+        value={month.toISOString().slice(0, 7)}
+        onChange={handleChangeMonth}
+        type="month"
+      />
+      {/* <section className="flex justify-between">
         <button
           onClick={() => {
             setMonth(new Date(month.getFullYear(), month.getMonth() - 1))
@@ -31,7 +42,7 @@ const Calendar = () => {
         >
           {">"}
         </button>
-      </section>
+      </section> */}
       <section className="grid grid-cols-7 gap-2">
         {[...Array(month.getDay())].map(() => (
           <span key={"blank"}></span>
