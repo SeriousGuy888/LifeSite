@@ -1,6 +1,4 @@
-import React, { useState } from "react"
-import "@uiw/react-md-editor/markdown-editor.css"
-import "@uiw/react-markdown-preview/markdown.css"
+import React from "react"
 import { useAtom } from "jotai"
 import { journalTextAtom } from "../../lib/state"
 
