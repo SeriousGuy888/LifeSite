@@ -7,11 +7,7 @@ const fs = require("fs");
 function StoringTest() {
   return (
     <>
-      <StoreData
-        theDate={new Date()}
-        healthState={"physically healthy"}
-        moodMeter={5}
-      />
+      <StoreData />
       <ClearData />
     </>
   );

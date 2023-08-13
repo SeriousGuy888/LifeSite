@@ -1,5 +1,7 @@
-import React from "react"
-import styles from "./Slider.module.scss"
+import React from "react";
+import styles from "./Slider.module.scss";
+
+declare var moodMeter: Number;
 
 const Slider = () => {
   return (
@@ -13,7 +15,7 @@ const Slider = () => {
       />
       <label htmlFor="slider">very cool slider</label>
     </div>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

@@ -29,7 +29,9 @@ function Home() {
           <MoodInput />
           <br />
           <br />
-          <StoringTest />
+          <>
+            <StoringTest />
+          </>
         </section>
       </main>
     </>

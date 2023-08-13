@@ -1,24 +1,23 @@
 import { NextPage } from "next";
 import React from "react";
 
-interface StoreDataProps {
-  theDate: Date;
-  healthState: string;
-  moodMeter: number;
-}
+declare var theDate: Date;
+globalThis.theDate = null;
+
+declare var healthState: String;
+globalThis.healthState = null;
+
+declare var moodMeter: Number;
+globalThis.moodMeter = null;
 
 const Store = require("electron-store");
 const storage = new Store();
 
-const StoreData: React.FC<StoreDataProps> = ({
-  theDate,
-  healthState,
-  moodMeter,
-}) => {
+const StoreData = () => {
   function storeTheData(
     tempDate: Date,
-    stateHealth: string,
-    meterMood: number
+    stateHealth: String,
+    meterMood: Number
   ) {
     const test = {
       theDate: tempDate,

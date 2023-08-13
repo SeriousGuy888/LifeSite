@@ -7,8 +7,10 @@ const validResponses = [
   "physically unhealthy",
   "mentally healthy",
   "mentally moderate",
-  "mentally unhealthy"
+  "mentally unhealthy",
 ];
+
+declare var healthState: String;
 
 export default function UserInput() {
   const [name, setName] = useState("");
@@ -40,29 +42,39 @@ export default function UserInput() {
         break;
       case "physically moderate":
         responseMessage = "Moderation is key to a balanced physical state.";
-        healthTip = "For tips on maintaining a moderate physical state, check out our health tips page.";
+        healthTip =
+          "For tips on maintaining a moderate physical state, check out our health tips page.";
         break;
       case "physically unhealthy":
-        responseMessage = "Consider adopting healthier habits for your physical well-being.";
-        healthTip = "Looking for ways to improve your physical health? Our health tips page can help.";
+        responseMessage =
+          "Consider adopting healthier habits for your physical well-being.";
+        healthTip =
+          "Looking for ways to improve your physical health? Our health tips page can help.";
         break;
       case "mentally healthy":
         responseMessage = "Your mental well-being is in a good place!";
-        healthTip = "Continue nurturing your mental health. Our health tips page offers insights.";
+        healthTip =
+          "Continue nurturing your mental health. Our health tips page offers insights.";
         break;
       case "mentally moderate":
-        responseMessage = "Strive for balance in maintaining your mental health.";
-        healthTip = "Maintaining a balanced mental state is important. Get tips from our health tips page.";
+        responseMessage =
+          "Strive for balance in maintaining your mental health.";
+        healthTip =
+          "Maintaining a balanced mental state is important. Get tips from our health tips page.";
         break;
       case "mentally unhealthy":
-        responseMessage = "Take steps to improve your mental well-being and seek support if needed.";
-        healthTip = "If you're struggling, don't hesitate to seek help. Our health tips page has resources.";
+        responseMessage =
+          "Take steps to improve your mental well-being and seek support if needed.";
+        healthTip =
+          "If you're struggling, don't hesitate to seek help. Our health tips page has resources.";
         break;
       default:
         responseMessage = "You are in an undefined health state.";
         break;
     }
   }
+
+  healthState = name;
 
   return (
     <>
@@ -81,11 +93,7 @@ export default function UserInput() {
           </Link>
         </p>
       )}
-      {savedResponse && (
-        <p>
-          Health state: {savedResponse}.
-        </p>
-      )}
+      {savedResponse && <p>Health state: {savedResponse}.</p>}
     </>
   );
 }

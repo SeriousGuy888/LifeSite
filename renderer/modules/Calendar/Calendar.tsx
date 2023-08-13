@@ -1,26 +1,30 @@
-import React, { useEffect } from "react"
-import CalendarDay from "./CalendarDay"
+import React, { useEffect } from "react";
+import CalendarDay from "./CalendarDay";
 
-import { useAtom } from "jotai"
-import { selectedDayAtom } from "../../lib/state"
+import { useAtom } from "jotai";
+import { selectedDayAtom } from "../../lib/state";
+
+declare var theDate: Date;
 
 const Calendar = () => {
-  const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom)
+  const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom);
 
-  const currDate = new Date()
+  const currDate = new Date();
 
   const [month, setMonth] = React.useState<Date>(
-    new Date(currDate.getFullYear(), currDate.getMonth()),
-  )
+    new Date(currDate.getFullYear(), currDate.getMonth())
+  );
   const handleChangeMonth = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const year = event.target.valueAsDate.getUTCFullYear()
-    const month = event.target.valueAsDate.getUTCMonth()
-    setMonth(new Date(year, month))
-  }
+    const year = event.target.valueAsDate.getUTCFullYear();
+    const month = event.target.valueAsDate.getUTCMonth();
+    setMonth(new Date(year, month));
+  };
 
   const handleSelectDay = (date: Date) => {
-    setSelectedDay(date)
-  }
+    setSelectedDay(date);
+  };
+
+  theDate = selectedDay;
 
   return (
     <div className="grid grid-cols-1 gap-4">
@@ -35,7 +39,7 @@ const Calendar = () => {
           <span key={"blank" + i}></span> // NOSONAR
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => {
-          const date = new Date(month.getFullYear(), month.getMonth(), i + 1)
+          const date = new Date(month.getFullYear(), month.getMonth(), i + 1);
           return (
             <CalendarDay
               key={date.toISOString()}
@@ -43,15 +47,15 @@ const Calendar = () => {
               selectDayFunc={handleSelectDay}
               isSelected={selectedDay?.toISOString() === date.toISOString()}
             />
-          )
+          );
         })}
       </section>
     </div>
-  )
-}
+  );
+};
 
 function getNumDaysInMonth(date: Date) {
-  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
-export default Calendar
+export default Calendar;
