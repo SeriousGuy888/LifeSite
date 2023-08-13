@@ -22,7 +22,11 @@ const Slider = () => {
         min={0}
         max={100}
       />
-      <label htmlFor="slider">Sad                                           Ok                                         Happy</label>
+      <label htmlFor="slider" className="w-full flex justify-between">
+        <span>Unhappy</span>
+        <span>Ok</span>
+        <span>Happy</span>
+      </label>
     </div>
   )
 }
