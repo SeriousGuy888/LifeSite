@@ -25,17 +25,13 @@ function Home() {
           <h1 className="text-2xl text-white mb-4">Selected Day</h1>
           <p className="text-white mb-4">{selectedDay.toDateString()}</p>
           <UserInput />
-          <br />
-          <br />
-          <MoodInput />
-          <br />
-          <br />
-          <JournalField />
-          <br />
-          <br />
-          <>
-            <StoringTest />
-          </>
+          <div className="grid grid-cols-1 gap-8 mt-8">
+            <MoodInput />
+            <JournalField />
+            <div>
+              <StoringTest />
+            </div>
+          </div>
         </section>
       </main>
     </>
