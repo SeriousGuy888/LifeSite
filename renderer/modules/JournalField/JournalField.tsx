@@ -1,9 +1,12 @@
-import React from "react"
-import { useAtom } from "jotai"
-import { journalTextAtom } from "../../lib/state"
+import React from "react";
+import { useAtom } from "jotai";
+import { journalTextAtom } from "../../lib/state";
+
+declare var journalEntry: string;
 
 const JournalField = () => {
-  const [text, setText] = useAtom(journalTextAtom)
+  const [text, setText] = useAtom(journalTextAtom);
+  journalEntry = text;
 
   return (
     <textarea
@@ -14,7 +17,7 @@ const JournalField = () => {
       value={text}
       onChange={(e) => setText(e.target.value)}
     ></textarea>
-  )
-}
+  );
+};
 
-export default JournalField
+export default JournalField;
