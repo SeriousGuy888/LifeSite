@@ -1,15 +1,16 @@
-import React from "react";
-import Head from "next/head";
-import Link from "next/link";
-import Calendar from "../modules/Calendar/Calendar";
-import UserInput from "../modules/UserInputMenu/UserInputMenu";
-import { useAtom } from "jotai";
-import { selectedDayAtom } from "../lib/state";
-import MoodInput from "../modules/MoodInput.tsx/MoodInput";
-import StoringTest from "../modules/Storing/StoringTest";
+import React from "react"
+import Head from "next/head"
+import Link from "next/link"
+import Calendar from "../modules/Calendar/Calendar"
+import UserInput from "../modules/UserInputMenu/UserInputMenu"
+import { useAtom } from "jotai"
+import { selectedDayAtom } from "../lib/state"
+import MoodInput from "../modules/MoodInput.tsx/MoodInput"
+import StoringTest from "../modules/Storing/StoringTest"
+import JournalField from "../modules/JournalField/JournalField"
 
 function Home() {
-  const [selectedDay] = useAtom(selectedDayAtom);
+  const [selectedDay] = useAtom(selectedDayAtom)
 
   return (
     <>
@@ -29,13 +30,16 @@ function Home() {
           <MoodInput />
           <br />
           <br />
+          <JournalField />
+          <br />
+          <br />
           <>
             <StoringTest />
           </>
         </section>
       </main>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
