@@ -17,11 +17,11 @@ function Home() {
       <Head>
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
-      <main className="grid grid-cols-2 h-screen">
-        <section className="bg-gray-900 p-8">
+      <main className="flex flex-col md:flex-row h-screen">
+        <section className="bg-gray-900 p-8 flex-1 md:max-w-xl">
           <Calendar />
         </section>
-        <section className="bg-gray-800 p-8">
+        <section className="bg-gray-800 p-8 flex-1">
           <h1 className="text-2xl text-white mb-4">Selected Day</h1>
           <p className="text-white mb-4">{selectedDay.toDateString()}</p>
           <UserInput />
