@@ -9,9 +9,12 @@ const CalendarDay: NextPage<{
 }> = ({ date, selectDayFunc, isSelected, isDisabled }) => {
   return (
     <div
-      className={`p-1 aspect-square cursor-pointer rounded-md grid place-items-center ${
+      className={`p-1 aspect-square rounded-md grid place-items-center ${
         isSelected ? "bg-blue-700" : isDisabled ? "bg-gray-800" : "bg-gray-700"
       }`}
+      style={{
+        cursor: isDisabled ? "not-allowed" : "pointer",
+      }}
       onClick={() => {
         if (!isDisabled) {
           selectDayFunc(date)
