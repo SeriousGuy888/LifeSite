@@ -63,14 +63,13 @@ const StoreData = () => {
       }
     }
 
-    //storageData.push(data);
     storage.set("data", storageData);
     console.log(storage.get("data"));
   }
 
   return (
     <div
-      className="bg-gray-700 p-4 aspect-square cursor-pointer rounded-xl grid place-items-center"
+      className="bg-gray-700 p-4 aspect-rectangle cursor-pointer rounded-xl grid place-items-center"
       onClick={() => storeTheData(theDate, healthState, moodMeter)}
     >
       <h2 className="text-xl">Save</h2>

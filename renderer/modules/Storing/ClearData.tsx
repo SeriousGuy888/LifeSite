@@ -12,7 +12,7 @@ const ClearData = () => {
 
   return (
     <div
-      className="bg-gray-700 p-4 aspect-square cursor-pointer rounded-xl grid place-items-center"
+      className="bg-gray-700 p-4 aspect-rectangle cursor-pointer rounded-xl grid place-items-center"
       onClick={() => ClearTheData()}
     >
       <h2 className="text-xl">Clear</h2>
