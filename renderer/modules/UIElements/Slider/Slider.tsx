@@ -13,7 +13,7 @@ const Slider = () => {
         min={0}
         max={100}
       />
-      <label htmlFor="slider">very cool slider</label>
+      <label htmlFor="slider">Sad                                           Ok                                         Happy</label>
     </div>
   );
 };
