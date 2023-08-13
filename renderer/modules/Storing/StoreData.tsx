@@ -4,11 +4,14 @@ import React from "react";
 declare var theDate: Date;
 globalThis.theDate = null;
 
-declare var healthState: String;
+declare var healthState: string;
 globalThis.healthState = null;
 
 declare var moodMeter: Number;
 globalThis.moodMeter = null;
+
+declare var journalEntry: string;
+globalThis.journalEntry = null;
 
 const Store = require("electron-store");
 const storage = new Store();
@@ -16,13 +19,15 @@ const storage = new Store();
 const StoreData = () => {
   function storeTheData(
     tempDate: Date,
-    stateHealth: String,
-    meterMood: Number
+    stateHealth: string,
+    meterMood: Number,
+    entryJournal: string
   ) {
     const data = {
       theDate: tempDate,
       healthState: stateHealth,
       moodMeter: meterMood,
+      journalEntry: entryJournal,
     };
 
     if (data.theDate == null) {
@@ -53,6 +58,7 @@ const StoreData = () => {
           console.log("duplicate detected");
           storageData[i].healthState = data.healthState;
           storageData[i].moodMeter = data.moodMeter;
+          storageData[i].journalEntry = data.journalEntry;
           isDuplicate = true;
           break;
         }
@@ -70,7 +76,9 @@ const StoreData = () => {
   return (
     <div
       className="bg-gray-700 p-4 aspect-rectangle cursor-pointer rounded-xl grid place-items-center"
-      onClick={() => storeTheData(theDate, healthState, moodMeter)}
+      onClick={() =>
+        storeTheData(theDate, healthState, moodMeter, journalEntry)
+      }
     >
       <h2 className="text-xl">Save</h2>
     </div>
