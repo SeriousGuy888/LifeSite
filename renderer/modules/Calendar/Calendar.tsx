@@ -4,6 +4,7 @@ import CalendarDay from "./CalendarDay"
 import { useAtom } from "jotai"
 import { selectedDayAtom } from "../../lib/state"
 import MonthPicker from "./MonthPicker"
+import { NextPage } from "next"
 
 declare var theDate: Date
 
@@ -12,7 +13,7 @@ export interface Month {
   month: number
 }
 
-const Calendar = () => {
+const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
   const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom)
 
   const currDate = new Date()
@@ -31,43 +32,54 @@ const Calendar = () => {
   const daysOfWeek = getDaysOfWeek()
 
   return (
-    <div className="grid grid-cols-1 gap-8">
-      <section className="flex justify-between">
-        <h2 className="text-3xl font-bold">
-          {getMonthDate(month).toLocaleDateString(undefined, {
-            month: "long",
-            year: "numeric",
+    <>
+      <div
+        className={`${collapsed ? "hidden" : "grid"} md:grid grid-cols-1 gap-8`}
+      >
+        <section className="flex justify-between">
+          <h2 className="text-3xl font-bold">
+            {getMonthDate(month).toLocaleDateString(undefined, {
+              month: "long",
+              year: "numeric",
+            })}
+          </h2>
+          <MonthPicker
+            month={month}
+            setMonth={setMonth}
+            currMonth={currMonth}
+          />
+        </section>
+        <section className="grid grid-cols-7 grid-rows-[0.25fr_repeat(6,minmax(0,1fr))] gap-2 select-none">
+          {daysOfWeek.map((day) => (
+            <span
+              key={day}
+              className="text-center uppercase font-bold bg-gray-700 rounded-md text-gray-300 text-sm tracking-wide"
+            >
+              {day}
+            </span>
+          ))}
+          {[...Array(getMonthDate(month).getDay())].map((_, i) => (
+            <span key={"blank" + i}></span> // NOSONAR
+          ))}
+          {[...Array(getNumDaysInMonth(month))].map((_, i) => {
+            const date = new Date(month.year, month.month, i + 1)
+            const isInFuture = date.getTime() > currDate.getTime()
+            return (
+              <CalendarDay
+                key={date.toISOString()}
+                date={date}
+                selectDayFunc={handleSelectDay}
+                isSelected={selectedDay?.toISOString() === date.toISOString()}
+                isDisabled={isInFuture}
+              />
+            )
           })}
-        </h2>
-        <MonthPicker month={month} setMonth={setMonth} currMonth={currMonth} />
-      </section>
-      <section className="grid grid-cols-7 grid-rows-[0.25fr_repeat(6,minmax(0,1fr))] gap-2 select-none">
-        {daysOfWeek.map((day) => (
-          <span
-            key={day}
-            className="text-center uppercase font-bold bg-gray-700 rounded-md text-gray-300 text-sm tracking-wide"
-          >
-            {day}
-          </span>
-        ))}
-        {[...Array(getMonthDate(month).getDay())].map((_, i) => (
-          <span key={"blank" + i}></span> // NOSONAR
-        ))}
-        {[...Array(getNumDaysInMonth(month))].map((_, i) => {
-          const date = new Date(month.year, month.month, i + 1)
-          const isInFuture = date.getTime() > currDate.getTime()
-          return (
-            <CalendarDay
-              key={date.toISOString()}
-              date={date}
-              selectDayFunc={handleSelectDay}
-              isSelected={selectedDay?.toISOString() === date.toISOString()}
-              isDisabled={isInFuture}
-            />
-          )
-        })}
-      </section>
-    </div>
+        </section>
+      </div>
+      <p className={`${collapsed ? "block" : "hidden"} md:hidden text-center`}>
+        Calendar
+      </p>
+    </>
   )
 }
 
