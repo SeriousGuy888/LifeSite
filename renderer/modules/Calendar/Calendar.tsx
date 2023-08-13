@@ -22,9 +22,8 @@ const Calendar = () => {
 
   const handleSelectDay = (date: Date) => {
     setSelectedDay(date);
+    theDate = date;
   };
-
-  theDate = selectedDay;
 
   return (
     <div className="grid grid-cols-1 gap-4">
