@@ -30,7 +30,7 @@ const Calendar = () => {
         onChange={handleChangeMonth}
         type="month"
       />
-      <section className="grid grid-cols-7 gap-2 select-none">
+      <section className="grid grid-cols-7 grid-rows-6 gap-2 select-none">
         {[...Array(month.getDay())].map((_, i) => (
           <span key={"blank" + i}></span> // NOSONAR
         ))}
