@@ -1,29 +1,35 @@
 import React from "react";
+import StoreData from "./StoreData";
 
-const StoringTest = () => {
-  function storeData() {
-    console.log("storing");
-  }
+const fs = require("fs");
+
+function StoringTest() {
   function loadData() {
-    console.log("loading");
+    fs.readFile("renderer/public/data.json", (error, data) => {
+      // if the reading process failed,
+      // throwing the error
+      if (error) {
+        // logging the error
+        console.error(error);
+
+        throw error;
+      }
+
+      // parsing the JSON object
+      // to convert it to a JavaScript object
+      const user = JSON.parse(data);
+
+      // printing the JavaScript object
+      // retrieved from the JSON file
+      console.log(user);
+    });
   }
 
   return (
     <>
-      <div
-        className="bg-gray-700 p-4 aspect-square cursor-pointer rounded-xl grid place-items-center"
-        onClick={storeData}
-      >
-        <h2 className="text-xl">Store</h2>
-      </div>
-      <div
-        className="bg-gray-700 p-4 aspect-square cursor-pointer rounded-xl grid place-items-center"
-        onClick={loadData}
-      >
-        <h2 className="text-xl">Load</h2>
-      </div>
+      <StoreData healthState={"physically healthy"} moodMeter={5} />
     </>
   );
-};
+}
 
 export default StoringTest;

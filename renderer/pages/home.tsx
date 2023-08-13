@@ -1,14 +1,15 @@
-import React from "react"
-import Head from "next/head"
-import Link from "next/link"
-import Calendar from "../modules/Calendar/Calendar"
-import UserInput from "../modules/UserInputMenu/UserInputMenu"
-import { useAtom } from "jotai"
-import { selectedDayAtom } from "../lib/state"
-import MoodInput from "../modules/MoodInput.tsx/MoodInput"
+import React from "react";
+import Head from "next/head";
+import Link from "next/link";
+import Calendar from "../modules/Calendar/Calendar";
+import UserInput from "../modules/UserInputMenu/UserInputMenu";
+import { useAtom } from "jotai";
+import { selectedDayAtom } from "../lib/state";
+import MoodInput from "../modules/MoodInput.tsx/MoodInput";
+import StoringTest from "../modules/Storing/StoringTest";
 
 function Home() {
-  const [selectedDay] = useAtom(selectedDayAtom)
+  const [selectedDay] = useAtom(selectedDayAtom);
 
   return (
     <>
@@ -26,10 +27,13 @@ function Home() {
           <br />
           <br />
           <MoodInput />
+          <br />
+          <br />
+          <StoringTest />
         </section>
       </main>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
