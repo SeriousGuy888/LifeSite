@@ -76,8 +76,14 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
           })}
         </section>
       </div>
-      <p className={`${collapsed ? "block" : "hidden"} md:hidden text-center`}>
-        Calendar
+      <p
+        className={`${
+          collapsed ? "block" : "hidden"
+        } md:hidden text-center text-lg font-semibold`}
+      >
+        {selectedDay.toLocaleDateString(undefined, {
+          dateStyle: "full",
+        })}
       </p>
     </>
   )
