@@ -3,22 +3,25 @@ import CalendarDay from "./CalendarDay"
 
 import { useAtom } from "jotai"
 import { selectedDayAtom } from "../../lib/state"
+import MonthPicker from "./MonthPicker"
 
 declare var theDate: Date
+
+export interface Month {
+  year: number
+  month: number
+}
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom)
 
   const currDate = new Date()
-
-  const [month, setMonth] = React.useState<Date>(
-    new Date(currDate.getFullYear(), currDate.getMonth()),
-  )
-  const handleChangeMonth = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const year = event.target.valueAsDate.getUTCFullYear()
-    const month = event.target.valueAsDate.getUTCMonth()
-    setMonth(new Date(year, month))
+  const currMonth = {
+    year: currDate.getFullYear(),
+    month: currDate.getMonth(),
   }
+
+  const [month, setMonth] = React.useState<Month>(currMonth)
 
   const handleSelectDay = (date: Date) => {
     setSelectedDay(date)
@@ -28,27 +31,30 @@ const Calendar = () => {
   const daysOfWeek = getDaysOfWeek()
 
   return (
-    <div className="grid grid-cols-1 gap-4">
-      <input
-        className="bg-gray-700"
-        value={month.toISOString().slice(0, 7)}
-        onChange={handleChangeMonth}
-        type="month"
-      />
+    <div className="grid grid-cols-1 gap-8">
+      <section className="flex justify-between">
+        <h2 className="text-4xl font-bold">
+          {getMonthDate(month).toLocaleDateString(undefined, {
+            month: "long",
+            year: "numeric",
+          })}
+        </h2>
+        <MonthPicker month={month} setMonth={setMonth} currMonth={currMonth} />
+      </section>
       <section className="grid grid-cols-7 grid-rows-[0.25fr_repeat(6,minmax(0,1fr))] gap-2 select-none">
         {daysOfWeek.map((day) => (
           <span
             key={day}
-            className="text-center uppercase font-bold opacity-50"
+            className="text-center uppercase font-bold bg-gray-700 rounded-md text-gray-300 text-sm tracking-wide"
           >
             {day}
           </span>
         ))}
-        {[...Array(month.getDay())].map((_, i) => (
+        {[...Array(getMonthDate(month).getDay())].map((_, i) => (
           <span key={"blank" + i}></span> // NOSONAR
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => {
-          const date = new Date(month.getFullYear(), month.getMonth(), i + 1)
+          const date = new Date(month.year, month.month, i + 1)
           const isInFuture = date.getTime() > currDate.getTime()
           return (
             <CalendarDay
@@ -79,8 +85,12 @@ function getDaysOfWeek() {
   )
 }
 
-function getNumDaysInMonth(date: Date) {
-  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+function getNumDaysInMonth(month: Month) {
+  return new Date(month.year, month.month + 1, 0).getDate()
+}
+
+function getMonthDate(month: Month) {
+  return new Date(month.year, month.month, 1)
 }
 
 export default Calendar
