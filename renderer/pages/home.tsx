@@ -5,6 +5,7 @@ import Calendar from "../modules/Calendar/Calendar"
 import UserInput from "../modules/UserInputMenu/UserInputMenu"
 import { useAtom } from "jotai"
 import { selectedDayAtom } from "../lib/store"
+import MoodInput from "../modules/MoodInput.tsx/MoodInput"
 
 function Home() {
   const [selectedDay] = useAtom(selectedDayAtom)
@@ -22,6 +23,9 @@ function Home() {
           <h1 className="text-2xl text-white mb-4">Selected Day</h1>
           <p className="text-white mb-4">{selectedDay.toDateString()}</p>
           <UserInput />
+          <br />
+          <br />
+          <MoodInput />
         </section>
       </main>
     </>

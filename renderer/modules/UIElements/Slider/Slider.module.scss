@@ -1,0 +1,10 @@
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 9999px;
+  height: 2.5em;
+  width: 1em;
+}
