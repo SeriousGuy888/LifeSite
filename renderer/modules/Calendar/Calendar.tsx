@@ -33,7 +33,7 @@ const Calendar = () => {
   return (
     <div className="grid grid-cols-1 gap-8">
       <section className="flex justify-between">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-3xl font-bold">
           {getMonthDate(month).toLocaleDateString(undefined, {
             month: "long",
             year: "numeric",
