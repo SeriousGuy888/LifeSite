@@ -17,7 +17,7 @@ function Home() {
       <Head>
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
-      <main className="flex flex-col md:flex-row h-screen">
+      <main className="flex flex-col md:flex-row min-h-screen">
         <section className="bg-gray-900 p-8 flex-1 md:max-w-xl">
           <Calendar />
         </section>
