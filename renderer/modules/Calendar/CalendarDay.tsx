@@ -5,13 +5,18 @@ const CalendarDay: NextPage<{
   date: Date
   selectDayFunc: (day: Date) => void
   isSelected: boolean
-}> = ({ date, selectDayFunc, isSelected }) => {
+  isDisabled: boolean
+}> = ({ date, selectDayFunc, isSelected, isDisabled }) => {
   return (
     <div
       className={`p-1 aspect-square cursor-pointer rounded-md grid place-items-center ${
-        isSelected ? "bg-blue-700" : "bg-gray-700"
+        isSelected ? "bg-blue-700" : isDisabled ? "bg-gray-800" : "bg-gray-700"
       }`}
-      onClick={() => selectDayFunc(date)}
+      onClick={() => {
+        if (!isDisabled) {
+          selectDayFunc(date)
+        }
+      }}
     >
       <p className="text-xl">{date.getDate().toString()}</p>
     </div>

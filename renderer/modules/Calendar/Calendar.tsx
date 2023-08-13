@@ -49,12 +49,14 @@ const Calendar = () => {
         ))}
         {[...Array(getNumDaysInMonth(month))].map((_, i) => {
           const date = new Date(month.getFullYear(), month.getMonth(), i + 1)
+          const isInFuture = date.getTime() > currDate.getTime()
           return (
             <CalendarDay
               key={date.toISOString()}
               date={date}
               selectDayFunc={handleSelectDay}
               isSelected={selectedDay?.toISOString() === date.toISOString()}
+              isDisabled={isInFuture}
             />
           )
         })}
