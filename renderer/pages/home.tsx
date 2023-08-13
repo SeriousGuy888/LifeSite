@@ -4,7 +4,7 @@ import Link from "next/link"
 import Calendar from "../modules/Calendar/Calendar"
 import UserInput from "../modules/UserInputMenu/UserInputMenu"
 import { useAtom } from "jotai"
-import { selectedDayAtom } from "../lib/store"
+import { selectedDayAtom } from "../lib/state"
 import MoodInput from "../modules/MoodInput.tsx/MoodInput"
 
 function Home() {

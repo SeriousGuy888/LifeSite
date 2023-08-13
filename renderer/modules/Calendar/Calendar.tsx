@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import CalendarDay from "./CalendarDay"
 
 import { useAtom } from "jotai"
-import { selectedDayAtom } from "../../lib/store"
+import { selectedDayAtom } from "../../lib/state"
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useAtom(selectedDayAtom)
