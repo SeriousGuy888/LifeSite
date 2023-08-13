@@ -2,7 +2,7 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 import Calendar from "../modules/Calendar/Calendar"
-import UserInput from "../modules/Calendar/UserInputMenu/UserInputMenu"
+import UserInput from "../modules/UserInputMenu/UserInputMenu"
 import { useAtom } from "jotai"
 import { selectedDayAtom } from "../lib/store"
 
