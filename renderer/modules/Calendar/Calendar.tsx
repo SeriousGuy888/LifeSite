@@ -30,7 +30,6 @@ const Calendar = () => {
         onChange={handleChangeMonth}
         type="month"
       />
-      <p>{selectedDay.toISOString()}</p>
       <section className="grid grid-cols-7 gap-2 select-none">
         {[...Array(month.getDay())].map((_, i) => (
           <span key={"blank" + i}></span> // NOSONAR
@@ -42,6 +41,7 @@ const Calendar = () => {
               key={date.toISOString()}
               date={date}
               selectDayFunc={handleSelectDay}
+              isSelected={selectedDay?.toISOString() === date.toISOString()}
             />
           )
         })}

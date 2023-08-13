@@ -3,8 +3,12 @@ import Head from "next/head"
 import Link from "next/link"
 import Calendar from "../modules/Calendar/Calendar"
 import UserInput from "../modules/Calendar/UserInputMenu/UserInputMenu"
+import { useAtom } from "jotai"
+import { selectedDayAtom } from "../lib/store"
 
 function Home() {
+  const [selectedDay] = useAtom(selectedDayAtom)
+
   return (
     <>
       <Head>
@@ -15,6 +19,8 @@ function Home() {
           <Calendar />
         </section>
         <section className="bg-gray-800 p-8">
+          <h1 className="text-2xl text-white mb-4">Selected Day</h1>
+          <p className="text-white mb-4">{selectedDay.toDateString()}</p>
           <UserInput />
         </section>
       </main>
