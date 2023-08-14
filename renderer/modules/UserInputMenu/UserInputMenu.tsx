@@ -95,7 +95,6 @@ export default function UserInput() {
         onChange={handleInputChange}
         style={{ color: "blue" }}
       />
-      <button onClick={saveResponse} style={{ color: "blue" }}>Touch these letters to set your health state</button>
       <p>{responseMessage}</p>
       {healthTip && (
       <p>
@@ -107,7 +106,7 @@ export default function UserInput() {
       </p>
     )}
       {validResponses.includes(healthState) && (
-        <p style={{ color: "blue" }}>As of your last update to the health state factor, you are: {healthState}.</p>
+        <p style={{ color: "red" }}>As of your last update to the health state factor, you are: {healthState}.</p>
       )}
     </>
   );
