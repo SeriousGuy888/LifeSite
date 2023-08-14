@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from "react"; 
 import { useAtom } from "jotai";
 import { dayDataAtom } from "../../lib/state";
+import Link from "next/link";
 
 const validResponses = [
   "physically healthy",
@@ -97,13 +97,13 @@ export default function UserInput() {
       <button onClick={saveResponse}>Set your health state</button>
       <p>{responseMessage}</p>
       {healthTip && (
-        <p>
-          {healthTip}{" "}
-          <Link href="/health-tips-page">
-            <a>Visit our health tips page</a>
-          </Link>
-        </p>
-      )}
+      <p>
+        {healthTip}{" "}
+        <Link href="/health-tips-page">
+  <a>Visit our health tips page</a>
+</Link>
+      </p>
+    )}
       {validResponses.includes(healthState) && (
         <p>Health state: {healthState}.</p>
       )}
