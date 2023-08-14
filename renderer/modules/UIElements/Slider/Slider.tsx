@@ -1,26 +1,23 @@
-import React, { useState } from "react"
+import React from "react"
 import styles from "./Slider.module.scss"
+import { NextPage } from "next"
 
-declare var moodMeter: number
-
-const Slider = () => {
-  const [sliderVal, setSliderVal] = useState(50)
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const num = parseInt(event.target.value)
-    setSliderVal(num)
-    moodMeter = num
-  }
-
+const Slider: NextPage<{
+  min: number
+  max: number
+  value: number
+  setValue: (value: number) => void
+}> = ({ min, max, value, setValue }) => {
   return (
     <div>
       <input
         type="range"
         className={`${styles.slider} h-4 w-full appearance-none rounded-full`}
         id="slider"
-        value={sliderVal}
-        onChange={handleChange}
-        min={0}
-        max={100}
+        value={value}
+        onChange={(e) => setValue(e.target.valueAsNumber)}
+        min={min}
+        max={max}
       />
       <label htmlFor="slider" className="w-full flex justify-between">
         <span>Unhappy</span>
