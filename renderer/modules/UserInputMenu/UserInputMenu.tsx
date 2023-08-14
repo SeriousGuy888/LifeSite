@@ -45,7 +45,7 @@ export default function UserInput() {
     if (healthState == "" || healthState == undefined || healthState == null) {
       responseMessage = "";
     } else {
-      responseMessage = "Please enter a valid health state: physically healthy, physically moderate, physically unhealthy, mentally healthy, mentally moderate, mentally unhealthy."
+      responseMessage = "Please enter a valid health state: physically healthy/moderate/unhealthy or mentally healthy/moderate/unhealthy"
       
     }
   } else if (validResponses.includes(healthState)) {
@@ -95,7 +95,8 @@ export default function UserInput() {
         onChange={handleInputChange}
         style={{ color: "blue" }}
       />
-      
+      <button onClick={saveResponse} style={{ color: "blue" }}>Touch these letters to set your health state</button>
+      <p>{responseMessage}</p>
       {healthTip && (
       <p>
         {healthTip}{" "}
@@ -106,7 +107,7 @@ export default function UserInput() {
       </p>
     )}
       {validResponses.includes(healthState) && (
-        <p style={{ color: "light green" }}>As of your last update to the health state factor, you are: {healthState}.</p>
+        <p style={{ color: "blue" }}>As of your last update to the health state factor, you are: {healthState}.</p>
       )}
     </>
   );
