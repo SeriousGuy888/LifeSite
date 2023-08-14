@@ -31,6 +31,15 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
 
   const daysOfWeek = getDaysOfWeek()
 
+  // Calculate date str on client side. This is necessary because the client and
+  // server might use different locales, and cause a React hydration error.
+  let dateStr = ""
+  useEffect(() => {
+    dateStr = selectedDay.toLocaleDateString(undefined, {
+      dateStyle: "full",
+    })
+  }, [selectedDay])
+
   return (
     <>
       <div
@@ -81,9 +90,7 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
           collapsed ? "block" : "hidden"
         } md:hidden text-center text-lg font-semibold`}
       >
-        {selectedDay.toLocaleDateString(undefined, {
-          dateStyle: "full",
-        })}
+        {dateStr}
       </p>
     </>
   )
