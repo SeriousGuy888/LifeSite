@@ -85,7 +85,7 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
                 date={date}
                 selectDayFunc={handleSelectDay}
                 isSelected={selectedDay?.toISOString() === date.toISOString()}
-                isDisabled={isInFuture}
+                isInFuture={isInFuture}
               />
             )
           })}
