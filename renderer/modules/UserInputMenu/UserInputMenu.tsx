@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useAtom } from "jotai";
+import { dayDataAtom } from "../../lib/state";
 
 const validResponses = [
   "physically healthy",
@@ -10,17 +12,24 @@ const validResponses = [
   "mentally unhealthy",
 ];
 
-declare var healthState: String;
+declare var healthState: string;
 
 export default function UserInput() {
   const [name, setName] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [savedResponse, setSavedResponse] = useState("");
+  const [dayData, setDayData] = useAtom(dayDataAtom);
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setName(inputValue);
     setIsValid(validResponses.includes(inputValue));
+
+    let dayDataCopy = { ...dayData };
+    dayDataCopy.healthState = e.target.value;
+    setDayData(dayDataCopy);
+    saveResponse();
+    healthState = e.target.value;
   };
 
   const saveResponse = () => {
@@ -74,12 +83,10 @@ export default function UserInput() {
     }
   }
 
-  healthState = name;
-
   return (
     <>
       <input
-        value={name}
+        value={dayData.healthState ?? ""}
         onChange={handleInputChange}
         style={{ color: "black" }}
       />

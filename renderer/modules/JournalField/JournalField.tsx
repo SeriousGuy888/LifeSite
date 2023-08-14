@@ -1,22 +1,22 @@
-import React from "react"
-import { useAtom } from "jotai"
-import { dayDataAtom } from "../../lib/state"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import React from "react";
+import { useAtom } from "jotai";
+import { dayDataAtom } from "../../lib/state";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-declare var journalEntry: string
+declare var journalEntry: string;
 
 const JournalField = () => {
-  const [dayData, setDayData] = useAtom(dayDataAtom)
+  const [dayData, setDayData] = useAtom(dayDataAtom);
 
   const handleTextUpdate = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const text = event.target.value
-    journalEntry = text
+    const text = event.target.value;
 
-    let dayDataCopy = { ...dayData }
-    dayDataCopy.journalEntry = text
-    setDayData(dayDataCopy)
-  }
+    let dayDataCopy = { ...dayData };
+    dayDataCopy.journalEntry = text;
+    setDayData(dayDataCopy);
+    journalEntry = text;
+  };
 
   return (
     <div className="grid lg:grid-cols-2 gap-4 w-full max-w-full overflow-x-auto">
@@ -36,7 +36,7 @@ const JournalField = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default JournalField
+export default JournalField;

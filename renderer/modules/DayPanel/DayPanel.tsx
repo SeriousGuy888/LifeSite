@@ -9,6 +9,10 @@ import { useAtom } from "jotai";
 import { DayData, dayDataAtom, selectedDayAtom } from "../../lib/state";
 import { datesAreSameDay } from "../../lib/utils";
 
+declare var healthState: string;
+declare var moodMeter: Number;
+declare var journalEntry: string;
+
 const DayPanel: NextPage<{
   className?: string;
 }> = ({ className }) => {
@@ -40,11 +44,17 @@ const DayPanel: NextPage<{
 
     if (!day) {
       setDayData(defaultData);
+      healthState = defaultData.healthState;
+      moodMeter = defaultData.moodMeter;
+      journalEntry = defaultData.journalEntry;
       return;
     }
 
     day.theDate = new Date(day.theDate);
     setDayData(day as DayData);
+    healthState = day.healthState;
+    moodMeter = day.moodMeter;
+    journalEntry = day.journalEntry;
   }, [selectedDay]);
 
   return (
