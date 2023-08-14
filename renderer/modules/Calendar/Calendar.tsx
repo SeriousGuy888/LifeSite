@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import CalendarDay from "./CalendarDay"
 
 import { useAtom } from "jotai"
@@ -33,12 +33,23 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
 
   // Calculate date str on client side. This is necessary because the client and
   // server might use different locales, and cause a React hydration error.
-  let dateStr = ""
+  const [dateStr, setDateStr] = useState("")
+  const [monthStr, setMonthStr] = useState("")
   useEffect(() => {
-    dateStr = selectedDay.toLocaleDateString(undefined, {
-      dateStyle: "full",
-    })
+    setDateStr(
+      selectedDay.toLocaleDateString(undefined, {
+        dateStyle: "full",
+      }),
+    )
   }, [selectedDay])
+  useEffect(() => {
+    setMonthStr(
+      getMonthDate(month).toLocaleDateString(undefined, {
+        month: "long",
+        year: "numeric",
+      }),
+    )
+  }, [month])
 
   return (
     <>
@@ -46,12 +57,7 @@ const Calendar: NextPage<{ collapsed: boolean }> = ({ collapsed }) => {
         className={`${collapsed ? "hidden" : "grid"} md:grid grid-cols-1 gap-8`}
       >
         <section className="flex justify-between">
-          <h2 className="text-3xl font-bold">
-            {getMonthDate(month).toLocaleDateString(undefined, {
-              month: "long",
-              year: "numeric",
-            })}
-          </h2>
+          <h2 className="text-3xl font-bold">{monthStr}</h2>
           <MonthPicker
             month={month}
             setMonth={setMonth}
