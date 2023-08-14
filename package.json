@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "my-nextron-app",
-  "description": "My application description",
+  "name": "life-site",
+  "description": "A journal and mood tracking thing for Recess Hacks 2023",
   "version": "1.0.0",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "author": "",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
