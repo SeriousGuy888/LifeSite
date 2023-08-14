@@ -1,12 +1,16 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: io.github.seriousguy888.lifesite
+productName: LifeSite
+copyright: Copyright © 2023 Project Contributors
 directories:
   output: dist
-  buildResources: resources
+  buildResources: assets
 files:
   - from: .
     filter:
       - package.json
       - app
 publish: null
+win:
+  target: portable
+mac:
+  target: dmg # i dont know if this is the portable build for mac

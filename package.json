@@ -1,7 +1,16 @@
 {
   "private": true,
   "name": "life-site",
+  "description": "A journal and mood tracking thing for Recess Hacks 2023",
   "version": "1.0.0",
+  "author": "Project Contributors",
+  "contributors": [
+    "@AKMain",
+    "@AndyYang69420",
+    "@PotatoNatoDev",
+    "@SeriousGuy888"
+  ],
+  "homepage": "https://github.com/SeriousGuy888/LifeSite",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
@@ -10,16 +19,21 @@
   },
   "dependencies": {
     "electron-serve": "^1.1.0",
-    "electron-store": "^8.1.0"
+    "electron-store": "^8.1.0",
+    "jotai": "^2.3.1",
+    "react-markdown": "^8.0.7",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.65.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "autoprefixer": "^10.4.7",
-    "electron": "^25.5.0",
-    "electron-builder": "^24.6.3",
+    "electron": "^21.3.3",
+    "electron-builder": "^23.6.0",
     "next": "^12.3.4",
-    "nextron": "^6.1.0",
+    "nextron": "^8.5.0",
     "postcss": "^8.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
