@@ -3,6 +3,7 @@
   "name": "life-site",
   "description": "A journal and mood tracking thing for Recess Hacks 2023",
   "version": "1.0.0",
+  "author": "Project Contributors",
   "contributors": [
     "@AKMain",
     "@AndyYang69420",

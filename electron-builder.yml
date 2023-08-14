@@ -12,7 +12,5 @@ files:
 publish: null
 win:
   target: portable
-  icon: "./assets/icon.ico"
 mac:
   target: dmg # i dont know if this is the portable build for mac
-  icon: "./assets/icon.icns"
