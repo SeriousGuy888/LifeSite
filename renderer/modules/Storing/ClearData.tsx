@@ -39,19 +39,4 @@ const ClearData = () => {
   );
 };
 
-function subscribeClear(eventName, listener) {
-  document.addEventListener(eventName, listener);
-}
-
-function unsubscribeClear(eventName, listener) {
-  document.removeEventListener(eventName, listener);
-}
-
-function publishClear(eventName, data) {
-  const event = new CustomEvent(eventName, { detail: data });
-  document.dispatchEvent(event);
-}
-
-export { subscribeClear, unsubscribeClear, publishClear };
-
 export default ClearData;
