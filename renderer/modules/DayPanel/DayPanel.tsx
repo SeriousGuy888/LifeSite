@@ -18,6 +18,13 @@ const DayPanel: NextPage<{
   const [selectedDay] = useAtom(selectedDayAtom)
   const [, setDayData] = useAtom(dayDataAtom)
 
+  const defaultData = {
+    theDate: selectedDay,
+    moodMeter: 50,
+    journalEntry: "",
+    healthState: "",
+  }
+
   // Every time the selected day changes, update the day data by pulling
   // from storage somehow.
   useEffect(() => {
@@ -33,6 +40,7 @@ const DayPanel: NextPage<{
     )
 
     if (!day) {
+      setDayData(defaultData)
       return
     }
 
