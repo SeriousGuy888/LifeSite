@@ -45,7 +45,8 @@ export default function UserInput() {
     if (healthState == "" || healthState == undefined || healthState == null) {
       responseMessage = "";
     } else {
-      responseMessage = "Please enter a valid health state";
+      responseMessage = "Please enter a valid health state: physically healthy, physically moderate, physically unhealthy, mentally healthy, mentally moderate, mentally unhealthy."
+      
     }
   } else if (validResponses.includes(healthState)) {
     switch (healthState) {
@@ -92,20 +93,21 @@ export default function UserInput() {
       <input
         value={dayData.healthState ?? ""}
         onChange={handleInputChange}
-        style={{ color: "black" }}
+        style={{ color: "blue" }}
       />
-      <button onClick={saveResponse}>Set your health state</button>
+      <button onClick={saveResponse} style={{ color: "blue" }}>Touch these letters to set your health state</button>
       <p>{responseMessage}</p>
       {healthTip && (
       <p>
         {healthTip}{" "}
         <Link href="/health-tips-page">
-  <a>Visit our health tips page</a>
+  <a style={{ color: "blue" }}>
+    Touch these letters to see our health tips page</a>
 </Link>
       </p>
     )}
       {validResponses.includes(healthState) && (
-        <p>Health state: {healthState}.</p>
+        <p style={{ color: "light green" }}>As of your last update to the health state factor, you are: {healthState}.</p>
       )}
     </>
   );
