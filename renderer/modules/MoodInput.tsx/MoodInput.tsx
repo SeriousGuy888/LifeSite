@@ -1,14 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 import Slider from "../UIElements/Slider/Slider"
 import { NextPage } from "next"
+import { useAtom } from "jotai"
+import { dayDataAtom } from "../../lib/state"
 
 declare var moodMeter: number
 
-const MoodInput: NextPage<{}> = () => {
-  const [sliderVal, setSliderVal] = useState(50)
+const MoodInput: NextPage = () => {
+  const [dayData, setDayData] = useAtom(dayDataAtom)
 
   const handleChange = (value: number) => {
-    setSliderVal(value)
+    let dayDataCopy = { ...dayData }
+    dayDataCopy.moodMeter = value
+    setDayData(dayDataCopy)
+
     moodMeter = value
   }
 
@@ -18,7 +23,12 @@ const MoodInput: NextPage<{}> = () => {
       <p className="text-gray-300">How are you feeling today?</p>
 
       <div className="my-4">
-        <Slider min={0} max={100} value={sliderVal} setValue={handleChange} />
+        <Slider
+          min={0}
+          max={100}
+          value={dayData.moodMeter}
+          setValue={handleChange}
+        />
       </div>
     </div>
   )
