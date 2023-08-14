@@ -1,6 +1,6 @@
 import { publicDecrypt } from "crypto";
 import React from "react";
-import { datesAreSameDay } from "../../lib/utils"
+import { datesAreSameDay } from "../../lib/utils";
 
 const Store = require("electron-store");
 const storage = new Store();

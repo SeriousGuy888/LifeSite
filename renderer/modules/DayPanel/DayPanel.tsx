@@ -1,52 +1,51 @@
-import React, { useEffect } from "react"
-import JournalField from "../JournalField/JournalField"
-import MoodInput from "../MoodInput.tsx/MoodInput"
-import StoringTest from "../Storing/StoringTest"
-import UserInput from "../UserInputMenu/UserInputMenu"
-import { NextPage } from "next"
-import Store from "electron-store"
-import { useAtom } from "jotai"
-import { DayData, dayDataAtom, selectedDayAtom } from "../../lib/state"
-import { datesAreSameDay } from "../../lib/utils"
-
-const storage = new Store()
-const data = storage.get("data")
+import React, { useEffect } from "react";
+import JournalField from "../JournalField/JournalField";
+import MoodInput from "../MoodInput.tsx/MoodInput";
+import StoringTest from "../Storing/StoringTest";
+import UserInput from "../UserInputMenu/UserInputMenu";
+import { NextPage } from "next";
+import Store from "electron-store";
+import { useAtom } from "jotai";
+import { DayData, dayDataAtom, selectedDayAtom } from "../../lib/state";
+import { datesAreSameDay } from "../../lib/utils";
 
 const DayPanel: NextPage<{
-  className?: string
+  className?: string;
 }> = ({ className }) => {
-  const [selectedDay] = useAtom(selectedDayAtom)
-  const [, setDayData] = useAtom(dayDataAtom)
+  const [selectedDay] = useAtom(selectedDayAtom);
+  const [, setDayData] = useAtom(dayDataAtom);
 
   const defaultData = {
     theDate: selectedDay,
     moodMeter: 50,
     journalEntry: "",
     healthState: "",
-  }
+  };
 
   // Every time the selected day changes, update the day data by pulling
   // from storage somehow.
   useEffect(() => {
+    const storage = new Store();
+    const data = storage.get("data");
     if (!data || !(data instanceof Array) || data.length === 0) {
-      return
+      return;
     }
     if (!selectedDay) {
-      return
+      return;
     }
 
     let day = data.find((day) =>
-      datesAreSameDay(new Date(day.theDate), selectedDay),
-    )
+      datesAreSameDay(new Date(day.theDate), selectedDay)
+    );
 
     if (!day) {
-      setDayData(defaultData)
-      return
+      setDayData(defaultData);
+      return;
     }
 
-    day.theDate = new Date(day.theDate)
-    setDayData(day as DayData)
-  }, [selectedDay])
+    day.theDate = new Date(day.theDate);
+    setDayData(day as DayData);
+  }, [selectedDay]);
 
   return (
     <section className={className}>
@@ -59,7 +58,7 @@ const DayPanel: NextPage<{
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default DayPanel
+export default DayPanel;

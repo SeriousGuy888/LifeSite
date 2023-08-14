@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import React from "react";
+import { datesAreSameDay } from "../../lib/utils";
 
 declare var theDate: Date;
 globalThis.theDate = null;
@@ -50,11 +51,7 @@ const StoreData = () => {
       for (let i = 0; i < storageData.length; i++) {
         const storedDate = new Date(storageData[i].theDate);
         const dataDate = new Date(data.theDate);
-        if (
-          storedDate.getDay() == dataDate.getDay() &&
-          storedDate.getMonth() == dataDate.getMonth() &&
-          storedDate.getFullYear() == dataDate.getFullYear()
-        ) {
+        if (datesAreSameDay(storedDate, dataDate)) {
           console.log("duplicate detected");
           storageData[i].healthState = data.healthState;
           storageData[i].moodMeter = data.moodMeter;

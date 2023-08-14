@@ -10,8 +10,6 @@ function StoringTest() {
     <>
       <StoreData />
       <br />
-      <LoadData />
-      <br />
       <ClearData />
     </>
   );
