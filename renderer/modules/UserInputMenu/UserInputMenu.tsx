@@ -41,10 +41,14 @@ export default function UserInput() {
   let responseMessage = "";
   let healthTip = "";
 
-  if (!isValid) {
-    responseMessage = "Please enter a valid health state";
-  } else if (validResponses.includes(name)) {
-    switch (name) {
+  if (!validResponses.includes(healthState)) {
+    if (healthState == "" || healthState == undefined || healthState == null) {
+      responseMessage = "";
+    } else {
+      responseMessage = "Please enter a valid health state";
+    }
+  } else if (validResponses.includes(healthState)) {
+    switch (healthState) {
       case "physically healthy":
         responseMessage = "Great job on maintaining a healthy physical state!";
         healthTip = "Consider visiting our health tips page for more advice.";
@@ -100,7 +104,9 @@ export default function UserInput() {
           </Link>
         </p>
       )}
-      {savedResponse && <p>Health state: {savedResponse}.</p>}
+      {validResponses.includes(healthState) && (
+        <p>Health state: {healthState}.</p>
+      )}
     </>
   );
 }
