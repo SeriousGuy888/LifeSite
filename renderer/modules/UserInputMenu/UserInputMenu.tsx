@@ -95,8 +95,7 @@ export default function UserInput() {
         onChange={handleInputChange}
         style={{ color: "blue" }}
       />
-      <button onClick={saveResponse} style={{ color: "blue" }}>Touch these letters to set your health state</button>
-      <p>{responseMessage}</p>
+      
       {healthTip && (
       <p>
         {healthTip}{" "}

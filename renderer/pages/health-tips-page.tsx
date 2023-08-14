@@ -34,7 +34,7 @@ const HealthTipsPage: React.FC = () => {
       </p>
       </section>
       <Link href="/home">
-        <a style={{ color: "blue" }}>Back to Home</a>
+        <a style={{ color: "blue" }}> Back to Home</a>
       </Link>
         </div>
   );
