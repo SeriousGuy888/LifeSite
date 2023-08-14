@@ -7,6 +7,7 @@ import { NextPage } from "next"
 import Store from "electron-store"
 import { useAtom } from "jotai"
 import { DayData, dayDataAtom, selectedDayAtom } from "../../lib/state"
+import { datesAreSameDay } from "../../lib/utils"
 
 const storage = new Store()
 const data = storage.get("data")
@@ -50,14 +51,6 @@ const DayPanel: NextPage<{
         </div>
       </div>
     </section>
-  )
-}
-
-function datesAreSameDay(a: Date, b: Date) {
-  return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
   )
 }
 

@@ -1,5 +1,6 @@
 import { publicDecrypt } from "crypto";
 import React from "react";
+import { datesAreSameDay } from "../../lib/utils"
 
 const Store = require("electron-store");
 const storage = new Store();
@@ -17,11 +18,7 @@ function loadTheData() {
     for (let i = 0; i < data.length; i++) {
       const storedDate = new Date(data[i].theDate);
       const actualDate = new Date(theDate);
-      if (
-        storedDate.getDay() == actualDate.getDay() &&
-        storedDate.getMonth() == actualDate.getMonth() &&
-        storedDate.getFullYear() == actualDate.getFullYear()
-      ) {
+      if (datesAreSameDay(storedDate, actualDate)) {
         //get the data only for that day
         const loadedData = {
           theDate: data[i].theDate,
