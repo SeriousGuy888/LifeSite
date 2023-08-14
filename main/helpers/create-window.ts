@@ -78,6 +78,7 @@ export default (
       contextIsolation: false,
       ...options.webPreferences,
     },
+    icon: `${__dirname}/../assets/icon.png`,
   };
   win = new BrowserWindow(browserOptions);
   win.setMenuBarVisibility(false); //comment this out if you are debugging

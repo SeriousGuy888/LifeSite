@@ -3,7 +3,13 @@
   "name": "life-site",
   "description": "A journal and mood tracking thing for Recess Hacks 2023",
   "version": "1.0.0",
-  "author": "",
+  "contributors": [
+    "@AKMain",
+    "@AndyYang69420",
+    "@PotatoNatoDev",
+    "@SeriousGuy888"
+  ],
+  "homepage": "https://github.com/SeriousGuy888/LifeSite",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
