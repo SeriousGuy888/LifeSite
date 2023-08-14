@@ -1,38 +1,13 @@
-<p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
+<img width="345" alt="our ABSOLUTELY BEAUTIFUL LOGO" src="https://github.com/SeriousGuy888/LifeSite/assets/38299346/169a1ab0-5244-4ba8-a076-4f44a14bf96d" title="ABSOLUTELY BEAUTIFUL LOGO">
 
-## Usage
+# LifeSite
+An application to manage your health state, mood, and feelings on a day to day basis.
 
-### Create an App
+Made as a web app bundled as a desktop app using [Electron](https://www.electronjs.org/).
 
-```
-# with npx
-$ npx create-nextron-app my-app --example with-tailwindcss
+## How to Use
+Download the `.exe` file from the [`v1.0.0` release](https://github.com/SeriousGuy888/LifeSite/releases/tag/v1.0.0) and run it.
 
-# with yarn
-$ yarn create nextron-app my-app --example with-tailwindcss
+## Recess Hacks 2023
+This project was our [submission](https://devpost.com/software/lifesite) to [Recess Hacks 2023](https://recesshacks-2023.devpost.com/).
 
-# with pnpx
-$ pnpx create-nextron-app my-app --example with-tailwindcss
-```
-
-### Install Dependencies
-
-```
-$ cd my-app
-
-# using yarn or npm
-$ yarn (or `npm install`)
-
-# using pnpm
-$ pnpm install --shamefully-hoist
-```
-
-### Use it
-
-```
-# development mode
-$ yarn dev (or `npm run dev` or `pnpm run dev`)
-
-# production build
-$ yarn build (or `npm run build` or `pnpm run build`)
-```
